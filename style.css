@@ -80,7 +80,7 @@ input[type=text] {
     list-style: none;
 }
 
-.close {
+/* .close {
     position: absolute;
     right: 0;
     top: 0;
@@ -90,4 +90,4 @@ input[type=text] {
 .close:hover {
     background-color: #f44336;
     color: white;
-}
+} */
