@@ -1,26 +1,46 @@
 let input = document.querySelector('form');
-let list = document.querySelector('#list');
 
-input.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
+document.getElementById("checkbox").disabled = true;
+document.getElementById("checkbox").style.opacity = 0;
 
-        let inputValue = document.getElementById('todo').value
-        let text = document.createTextNode(inputValue);
+input.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
 
-        let li = document.createElement('li');
-        li.appendChild(text);
-        list.appendChild(li);
+    document.getElementById("checkbox").disabled = false;
+    document.getElementById("checkbox").style.opacity = 1;
 
-        input.reset();
-    }
+    let inputValue = document.getElementById('todo').value
+    let text = document.createTextNode(inputValue);
+
+    let list = document.createElement('ul');
+    input.appendChild(list);
+    let listItem = document.createElement('li');
+    list.appendChild(listItem);
+
+    let label = document.createElement('label');
+    let liContainer = document.createElement('div');
+    listItem.appendChild(label);
+    label.appendChild(liContainer);
+
+    let checkbox = document.createElement('input');
+    checkbox.type = "checkbox";
+    checkbox.value = 1;
+    checkbox.name = "checkbox";
+
+    liContainer.appendChild(checkbox);
+    liContainer.appendChild(text);
+
+    let closeButton = document.createElement('span');
+    closeButton.className = "close";
+    closeButton.textContent = "x";
+    liContainer.appendChild(closeButton);
+
+    input.appendChild(label);
+
+    input.reset();
+  }
 });
 
-var i;
-for (i = 0; i < list.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}   
+
+
