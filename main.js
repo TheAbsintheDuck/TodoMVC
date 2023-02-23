@@ -1,4 +1,5 @@
 let input = document.querySelector('form');
+let list = document.querySelector('#list');
 
 document.getElementById("checkbox").disabled = true;
 document.getElementById("checkbox").style.opacity = 0;
@@ -13,8 +14,6 @@ input.addEventListener("keypress", function (event) {
     let inputValue = document.getElementById('todo').value
     let text = document.createTextNode(inputValue);
 
-    let list = document.createElement('ul');
-    input.appendChild(list);
     let listItem = document.createElement('li');
     list.appendChild(listItem);
 
@@ -31,12 +30,12 @@ input.addEventListener("keypress", function (event) {
     liContainer.appendChild(checkbox);
     liContainer.appendChild(text);
 
-    let closeButton = document.createElement('span');
-    closeButton.className = "close";
-    closeButton.textContent = "x";
-    liContainer.appendChild(closeButton);
+    // let closeButton = document.createElement('span');
+    // closeButton.className = "close";
+    // closeButton.textContent = "X";
+    // liContainer.appendChild(closeButton);
 
-    input.appendChild(label);
+    listItem.appendChild(label);
 
     input.reset();
   }
