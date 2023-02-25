@@ -31,6 +31,14 @@ h1 {
     box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
+.notepad-footer {
+    grid-area: notepad-footer;
+    background-color: white;
+    border-color: black;
+    box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
 .footer {
     grid-area: footer;
     margin-top: 50px;
@@ -43,6 +51,7 @@ h1 {
     grid-template:
         "header header header"
         "left notepad right"
+        "left notepad-footer right"
         "footer footer footer";
 }
 
@@ -64,7 +73,7 @@ input[type=text] {
     width: 95%;
 }
 
-.notepad #checkbox {
+.notepad #select-all {
     margin-left: 20px;
     margin-top: 25px;
     margin-bottom: 20px;
@@ -86,4 +95,8 @@ ul {
 
 li {
     list-style: none;
+}
+
+.close {
+    float: right;
 }
