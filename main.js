@@ -92,12 +92,21 @@ allButton.addEventListener("click", function (event) {
 
     listItem[i].style.display = "block";
   }
-
 });
 
-activeButton.addEventListener("click", function () {
+activeButton.addEventListener("click", function (event) {
+  event.preventDefault();
 
+  let checkboxes = document.querySelectorAll('#item-checkbox');
+  let listItem = document.querySelectorAll('li');
 
+  for (let i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      listItem[i].style.display = "none";
+    } else {
+      listItem[i].style.display = "block";
+    }
+  }
 });
 
 completedButton.addEventListener("click", function (event) {
