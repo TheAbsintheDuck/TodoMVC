@@ -83,8 +83,15 @@ let allButton = document.querySelector('#all');
 let activeButton = document.querySelector('#active');
 let completedButton = document.querySelector('#completed');
 
-allButton.addEventListener("click", function () {
+allButton.addEventListener("click", function (event) {
+  event.preventDefault();
 
+  let listItem = document.querySelectorAll('li');
+
+  for (let i = 0; i < listItem.length; i++) {
+
+    listItem[i].style.display = "block";
+  }
 
 });
 
@@ -94,19 +101,16 @@ activeButton.addEventListener("click", function () {
 });
 
 completedButton.addEventListener("click", function (event) {
-  // event.preventDefault();
+  event.preventDefault();
 
-  // let markedCheckbox = document.querySelectorAll('#item-checkbox');
-  // let elem = document.querySelectorAll('li');
+  let checkboxes = document.querySelectorAll('#item-checkbox');
+  let listItem = document.querySelectorAll('li');
 
-  // for (let i = 0; i < markedCheckbox.length; i++) {
-  //   if (markedCheckbox[i].checked) {
-  //     elem.style.display = "block";
-  //   }
-
-  //   else {
-  //     elem.style.display = "none";
-  //   }
-  // }
-
+  for (let i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      listItem[i].style.display = "block";
+    } else {
+      listItem[i].style.display = "none";
+    }
+  }
 });
