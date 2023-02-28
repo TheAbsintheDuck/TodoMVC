@@ -100,3 +100,12 @@ li {
 .close {
     float: right;
 }
+
+.status {
+    text-align: center;
+    padding: 10px;
+}
+
+form #delete {
+    float: right;
+}

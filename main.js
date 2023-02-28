@@ -15,7 +15,10 @@ input.addEventListener("keypress", function (event) {
     document.getElementById("select-all").disabled = false;
     document.getElementById("select-all").style.opacity = 1;
 
-    //Shows the notepad-footer.
+    document.getElementById('delete').style.display = "none";
+    document.getElementById('delete').disabled = true;
+
+    //Shows the tool for manipulating the list.
     document.querySelector(".notepad-footer").style.display = "block";
 
     let inputValue = document.getElementById('todo').value
@@ -38,6 +41,7 @@ input.addEventListener("keypress", function (event) {
     checkbox.type = "checkbox";
     checkbox.value = 1;
     checkbox.name = "checkbox";
+    checkbox.id = "item-checkbox";
 
     //Adds the checkbox and the text to the container.
     liContainer.appendChild(checkbox);
@@ -60,7 +64,7 @@ input.addEventListener("keypress", function (event) {
     closeButton.textContent = "X";
     liContainer.appendChild(closeButton);
 
-    //When the close button is clicked it removes the li-element and the notepad-footer.
+    //When the close button is clicked it removes the li-element and the toolbox.
     //And if there is no li-elements the "select-all"-checkbox is not showned.
     closeButton.onclick = function () {
       listItem.remove();
@@ -73,4 +77,36 @@ input.addEventListener("keypress", function (event) {
 
     input.reset();
   }
+});
+
+let allButton = document.querySelector('#all');
+let activeButton = document.querySelector('#active');
+let completedButton = document.querySelector('#completed');
+
+allButton.addEventListener("click", function () {
+
+
+});
+
+activeButton.addEventListener("click", function () {
+
+
+});
+
+completedButton.addEventListener("click", function (event) {
+  // event.preventDefault();
+
+  // let markedCheckbox = document.querySelectorAll('#item-checkbox');
+  // let elem = document.querySelectorAll('li');
+
+  // for (let i = 0; i < markedCheckbox.length; i++) {
+  //   if (markedCheckbox[i].checked) {
+  //     elem.style.display = "block";
+  //   }
+
+  //   else {
+  //     elem.style.display = "none";
+  //   }
+  // }
+
 });
