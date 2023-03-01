@@ -1,5 +1,6 @@
 let input = document.querySelector('form');
 let list = document.querySelector('#list');
+const checkboxes = document.querySelectorAll('#item.checkbox');
 
 //Disables and hides the "select-all"-checkbox before any li-elements have been added.
 document.getElementById("select-all").disabled = true;
@@ -122,4 +123,44 @@ completedButton.addEventListener("click", function (event) {
       listItem[i].style.display = "none";
     }
   }
+});
+
+
+
+
+checkboxes.forEach(function(checkbox) {
+  checkbox.addEventListener('change', function(event) {
+    let atLeastOneChecked = false;
+    checkboxes.forEach(function(checkbox) {
+      if (checkbox.checked) {
+        atLeastOneChecked = true;
+      }
+    });
+
+    if (atLeastOneChecked) {
+      deleteButton.style.display = "block";
+      deleteButton.disabled = false;
+    } else {
+      deleteButton.style.display = "none";
+      deleteButton.disabled = true;
+    }
+
+  });
+
+});
+      
+
+
+deleteButton.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  let checkboxes = document.querySelectorAll('#item-checkbox');
+
+  for (let i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      const index = list.indexOf(i);      
+      list.splice(index, 1);
+    } 
+  }
+  
 });
