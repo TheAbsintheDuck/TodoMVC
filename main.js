@@ -62,7 +62,7 @@ input.addEventListener("keypress", function (event) {
     //Creates a closebutton and adds it to the container.
     let closeButton = document.createElement('span');
     closeButton.className = "close";
-    closeButton.textContent = "X";
+    closeButton.textContent = "❌";
     liContainer.appendChild(closeButton);
 
     //When the close button is clicked it removes the li-element and the toolbox.
