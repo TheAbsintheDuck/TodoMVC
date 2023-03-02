@@ -25,6 +25,10 @@ input.addEventListener("keypress", function (event) {
     let inputValue = document.getElementById('todo').value
     let text = document.createTextNode(inputValue);
 
+    if (inputValue === "") {
+      return;
+    }
+
     let listItem = document.createElement('li');
     list.appendChild(listItem);
 
@@ -128,10 +132,10 @@ completedButton.addEventListener("click", function (event) {
 
 
 
-checkboxes.forEach(function(checkbox) {
-  checkbox.addEventListener('change', function(event) {
+checkboxes.forEach(function (checkbox) {
+  checkbox.addEventListener('change', function (event) {
     let atLeastOneChecked = false;
-    checkboxes.forEach(function(checkbox) {
+    checkboxes.forEach(function (checkbox) {
       if (checkbox.checked) {
         atLeastOneChecked = true;
       }
@@ -148,7 +152,7 @@ checkboxes.forEach(function(checkbox) {
   });
 
 });
-      
+
 
 
 deleteButton.addEventListener("click", function (event) {
@@ -158,9 +162,9 @@ deleteButton.addEventListener("click", function (event) {
 
   for (let i = 0; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
-      const index = list.indexOf(i);      
+      const index = list.indexOf(i);
       list.splice(index, 1);
-    } 
+    }
   }
-  
+
 });
