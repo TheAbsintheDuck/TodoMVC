@@ -1,6 +1,7 @@
 let input = document.querySelector('form');
 let list = document.querySelector('#list');
-const checkboxes = document.querySelectorAll('#item.checkbox');
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
 
 //Disables and hides the "select-all"-checkbox before any li-elements have been added.
 document.getElementById("select-all").disabled = true;
@@ -84,6 +85,7 @@ input.addEventListener("keypress", function (event) {
 
     input.reset();
     listItemCounter();
+    
   }
 });
 
@@ -147,6 +149,7 @@ function listItemCounter() {
 let allButton = document.querySelector('#all');
 let activeButton = document.querySelector('#active');
 let completedButton = document.querySelector('#completed');
+let deleteButton = document.getElementById('delete');
 
 //When the "All"-button is clicked it shows all li-elements in the list.
 allButton.addEventListener("click", function (event) {
@@ -197,9 +200,24 @@ completedButton.addEventListener("click", function (event) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 checkboxes.forEach(function (checkbox) {
   checkbox.addEventListener('change', function (event) {
+
     let atLeastOneChecked = false;
+
     checkboxes.forEach(function (checkbox) {
       if (checkbox.checked) {
         atLeastOneChecked = true;
@@ -209,14 +227,21 @@ checkboxes.forEach(function (checkbox) {
     if (atLeastOneChecked) {
       deleteButton.style.display = "block";
       deleteButton.disabled = false;
-    } else {
+    } 
+    
+    else {
       deleteButton.style.display = "none";
       deleteButton.disabled = true;
     }
 
+    console.log(atLeastOneChecked);
+
   });
 
 });
+
+
+
 
 
 
