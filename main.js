@@ -83,6 +83,19 @@ input.addEventListener("keypress", function (event) {
       listItemCounter();
     }
 
+    let deleteButton = document.getElementById('#delete');
+
+    deleteButton.onclick = function () {
+      let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      let listItem = document.querySelectorAll('li');
+    
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {   
+          list.remove(listItem[i]);
+        }
+      }
+    }
+
     input.reset();
     listItemCounter();
     
@@ -258,7 +271,7 @@ checkboxes.forEach(function (checkbox) {
 
 
 
-
+/*
 
 deleteButton.addEventListener("click", function (event) {
   event.preventDefault();
@@ -275,3 +288,4 @@ deleteButton.addEventListener("click", function (event) {
 
   return;
 });
+*/
