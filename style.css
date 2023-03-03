@@ -107,6 +107,11 @@ li:hover .close {
     display: none;
 }
 
+#counter {
+    position: absolute;
+    font-size: medium;
+    margin-left: 10px;
+}
 
 .status {
     text-align: center;
