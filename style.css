@@ -121,3 +121,12 @@ li:hover .close {
 form #delete {
     float: right;
 }
+#item-checkbox:checked+p {
+    text-decoration: line-through;
+}
+
+p {
+    display: inline-block;
+    max-width: 400px;
+    word-wrap: break-word;
+}

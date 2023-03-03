@@ -25,6 +25,8 @@ input.addEventListener("keypress", function (event) {
 
     let inputValue = document.getElementById('todo').value
     let text = document.createTextNode(inputValue);
+    let p = document.createElement('p');
+    p.appendChild(text);
 
     if (inputValue === "") {
       return;
@@ -51,18 +53,7 @@ input.addEventListener("keypress", function (event) {
 
     //Adds the checkbox and the text to the container.
     liContainer.appendChild(checkbox);
-    liContainer.appendChild(text);
-
-    //If the user clicks the checkbox the text inside the container is striked out.
-    checkbox.addEventListener('change', function (event) {
-      if (this.checked) {
-        liContainer.style.textDecoration = 'line-through';
-      }
-
-      else {
-        liContainer.style.textDecoration = '';
-      }
-    });
+    liContainer.appendChild(p);
 
     //Creates a closebutton and adds it to the container.
     let closeButton = document.createElement('span');
