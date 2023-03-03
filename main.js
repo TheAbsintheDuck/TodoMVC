@@ -1,5 +1,5 @@
 let input = document.querySelector('form');
-let list = document.querySelector('#list');
+let list = document.querySelector('#list'); 
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
 
@@ -228,18 +228,6 @@ completedButton.addEventListener("click", function (event) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 checkboxes.forEach(function (checkbox) {
   checkbox.addEventListener('change', function (event) {
 
@@ -275,13 +263,15 @@ checkboxes.forEach(function (checkbox) {
 deleteButton.addEventListener("click", function (event) {
   event.preventDefault();
 
-  let checkboxes = document.querySelectorAll('#item-checkbox');
+  let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  let listItem = document.querySelectorAll('li');
 
   for (let i = 0; i < checkboxes.length; i++) {
-    if (checkboxes[i].checked) {
-      const index = list.indexOf(i);
-      list.splice(index, 1);
+    if (checkboxes[i].checked) {   
+      list.remove(listItem[i]);
     }
   }
+  console.log("removed");
 
+  return;
 });
