@@ -78,16 +78,77 @@ input.addEventListener("keypress", function (event) {
         document.getElementById("select-all").style.opacity = 0;
         document.querySelector(".notepad-footer").style.display = "none";
       }
+
+      listItemCounter();
     }
 
     input.reset();
+    listItemCounter();
   }
 });
+
+
+//Counts each listitem that isn't marked as checked.
+function listItemCounter() {
+  let counter = document.querySelector('#counter');
+  let listItems = document.querySelectorAll('li');
+  let count = 0;
+
+  //Iterates over all li-elements and match them with the checkbox with the same index.
+  for (let i = 0; i < listItems.length; i++) {
+
+    let checkbox = listItems[i].querySelector('#item-checkbox');
+
+    //If a checkbox is not marked as checked, the counter increase wich means that there is things left to do.
+    if (checkbox.checked === false) {
+      count++;
+    }
+
+    //Every time a checkbox is marked as checked or unchecked, the counter increase or decrease.
+    checkbox.addEventListener('change', function () {
+
+      if (checkbox.checked === true) {
+        count--;
+      }
+
+      else {
+        count++;
+      }
+
+      //Depending on the counters value, different output is displayed everytime a checkbox is changed.
+      if (count < 1) {
+        counter.textContent = count + " items left";
+      }
+
+      if (count === 1) {
+        counter.textContent = count + " item left";
+      }
+
+      else {
+        counter.textContent = count + " items left";
+      }
+    });
+  }
+
+  //Depending on the counters value, different output is displayed
+  if (count < 1) {
+    counter.textContent = count + " items left";
+  }
+
+  if (count === 1) {
+    counter.textContent = count + " item left";
+  }
+
+  else {
+    counter.textContent = count + " items left";
+  }
+};
 
 let allButton = document.querySelector('#all');
 let activeButton = document.querySelector('#active');
 let completedButton = document.querySelector('#completed');
 
+//When the "All"-button is clicked it shows all li-elements in the list.
 allButton.addEventListener("click", function (event) {
   event.preventDefault();
 
@@ -99,12 +160,14 @@ allButton.addEventListener("click", function (event) {
   }
 });
 
+//When the "Active"-button is clicked it shows all li-elements that is not marked as checked in the list.
 activeButton.addEventListener("click", function (event) {
   event.preventDefault();
 
   let checkboxes = document.querySelectorAll('#item-checkbox');
   let listItem = document.querySelectorAll('li');
 
+  //Each checkbox index is match to the li-elements index.
   for (let i = 0; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
       listItem[i].style.display = "none";
@@ -114,12 +177,14 @@ activeButton.addEventListener("click", function (event) {
   }
 });
 
+//When the "Completed"-button is clicked it shows all li-elements that is marked as checked.
 completedButton.addEventListener("click", function (event) {
   event.preventDefault();
 
   let checkboxes = document.querySelectorAll('#item-checkbox');
   let listItem = document.querySelectorAll('li');
 
+  //Each checkbox index is match to the li-elements index.
   for (let i = 0; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
       listItem[i].style.display = "block";
