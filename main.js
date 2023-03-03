@@ -89,6 +89,33 @@ input.addEventListener("keypress", function (event) {
   }
 });
 
+selectAll.addEventListener("change", selectAllCheckboxes);
+let allSelected = false;
+
+function selectAllCheckboxes() {
+  let checkboxes = document.querySelectorAll('#item-checkbox');
+
+  if (allSelected === false) {
+    for (let i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = true;
+    }
+
+    listItemCounter();
+
+    allSelected = true;
+  }
+
+  else if (allSelected === true) {
+    for (let i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = false;
+    }
+
+    listItemCounter();
+
+    allSelected = false;
+  }
+};
+
 
 //Counts each listitem that isn't marked as checked.
 function listItemCounter() {
