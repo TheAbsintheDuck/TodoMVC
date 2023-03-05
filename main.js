@@ -1,5 +1,5 @@
 let input = document.querySelector('form');
-let list = document.querySelector('#list'); 
+let list = document.querySelector('#list');
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
 
@@ -74,22 +74,24 @@ input.addEventListener("keypress", function (event) {
       listItemCounter();
     }
 
+    input.reset();
+    listItemCounter();
+
     let deleteButton = document.getElementById('#delete');
 
     deleteButton.onclick = function () {
       let checkboxes = document.querySelectorAll('input[type="checkbox"]');
       let listItem = document.querySelectorAll('li');
-    
+
       for (let i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {   
+        if (checkboxes[i].checked) {
           list.remove(listItem[i]);
         }
       }
     }
 
-    input.reset();
-    listItemCounter();
-    
+
+
   }
 });
 
@@ -246,8 +248,8 @@ checkboxes.forEach(function (checkbox) {
     if (atLeastOneChecked) {
       deleteButton.style.display = "block";
       deleteButton.disabled = false;
-    } 
-    
+    }
+
     else {
       deleteButton.style.display = "none";
       deleteButton.disabled = true;
