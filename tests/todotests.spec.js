@@ -9,6 +9,7 @@ const todos = [
 ];
 
 test('add note', async ({ page }) => {
+
     await page.goto('http://127.0.0.1:5500/index.html');
 
     await newTodo.fill(todos[0]);
@@ -19,11 +20,15 @@ test('add note', async ({ page }) => {
 });
 
 test('1 item', async ({ page }) => {
+
     await page.goto('http://127.0.0.1:5500/index.html');
 
     await newTodo.fill(todos[0]);
     await newTodo.press('Enter');
 
     await expect(page.locator('counter')).toHaveText("1 item left");
-
+    await page.locator('item-checkbox').toBeVisible();
+    await page.check('item-checkbox');
+    await page.isChecked('item-checkbox').toBeTruthy();
+    await expect(page.locator('counter')).toHaveText("0 items left");
 });
