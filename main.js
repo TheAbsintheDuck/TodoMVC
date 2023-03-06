@@ -89,13 +89,21 @@ input.addEventListener("keypress", function (event) {
       
       event.preventDefault();
 
+      const selectedObjects = [];
+      let indexForArray = 0;
       for (let i = 0; i < listItem.length; i++) {
         let checkbox = listItem[i].querySelector('#item-checkbox');
         
         if (checkbox.checked === true) {     
-          list.removeChild(list.getElementsByTagName("li")[i]);
+          selectedObjects[indexForArray] = i;
+          indexForArray++;        
         }
       }
+
+      for (let m = selectedObjects.length - 1; m >= 0; m--) {
+        list.removeChild(list.getElementsByTagName("li")[selectedObjects[m]]);
+      }
+      
     }
   }
 });
@@ -147,6 +155,8 @@ function listItemCounter() {
 
     //Every time a checkbox is marked as checked or unchecked, the counter increase or decrease.
     checkbox.addEventListener('change', function () {
+
+     
 
       if (checkbox.checked === true) {
         count--;
