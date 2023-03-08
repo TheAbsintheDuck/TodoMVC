@@ -56,13 +56,5 @@ test('remove notes', async ({ page }) => {
 
   await expect(page.locator('#counter')).toHaveText('2 item left');
 
-  /*
-  let deleteButton = document.getElementById('delete');
-
-  deleteButton.click();
-
-  await expect(page.locator('#counter')).toHaveText('0 item left');
-  */
-
 });
 
