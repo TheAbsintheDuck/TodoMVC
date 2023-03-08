@@ -1,7 +1,7 @@
 let input = document.querySelector('form');
 let list = document.querySelector('#list');
 let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
+let listCounter = 1;
 
 
 //Disables and hides the "select-all"-checkbox before any li-elements have been added.
@@ -45,19 +45,23 @@ input.addEventListener("keypress", function (event) {
     listItem.appendChild(label);
     label.appendChild(liContainer);
 
+
+    
     //Creates a checkbox.
+
     let checkbox = document.createElement('input');
     checkbox.type = "checkbox";
-    checkbox.value = 1;
+    checkbox.value = listCounter;
     checkbox.name = "checkbox";
-    checkbox.id = "item-checkbox";
+    checkbox.id = "item-checkbox" + listCounter;
 
-   
-
+    
     //Adds the checkbox and the text to the container.
     liContainer.appendChild(checkbox);
     liContainer.appendChild(p);
 
+    listCounter++;
+    
     //Creates a closebutton and adds it to the container.
     let closeButton = document.createElement('span');
     closeButton.className = "close";
@@ -70,6 +74,7 @@ input.addEventListener("keypress", function (event) {
       listItem.remove();
 
       if (!list.children.length) {
+        listCounter = 1;
         document.getElementById("select-all").style.opacity = 0;
         document.querySelector(".notepad-footer").style.display = "none";
       }
