@@ -54,6 +54,7 @@ input.addEventListener("keypress", function (event) {
     checkbox.value = listCounter;
     checkbox.name = "checkbox";
     checkbox.id = "item-checkbox" + listCounter;
+    checkbox.className ="item-checkbox";
 
     
     //Adds the checkbox and the text to the container.
@@ -97,7 +98,7 @@ input.addEventListener("keypress", function (event) {
       const selectedObjects = [];
       let indexForArray = 0;
       for (let i = 0; i < listItem.length; i++) {
-        let checkbox = listItem[i].querySelector('#item-checkbox');
+        let checkbox = listItem[i].querySelector('.item-checkbox');
         
         if (checkbox.checked === true) {     
           selectedObjects[indexForArray] = i;
@@ -117,7 +118,7 @@ selectAll.addEventListener("change", selectAllCheckboxes);
 let allSelected = false;
 
 function selectAllCheckboxes() {
-  let checkboxes = document.querySelectorAll('#item-checkbox');
+  let checkboxes = document.querySelectorAll('.item-checkbox');
 
   if (allSelected === false) {
     for (let i = 0; i < checkboxes.length; i++) {
@@ -151,7 +152,7 @@ function listItemCounter() {
   //Iterates over all li-elements and match them with the checkbox with the same index.
   for (let i = 0; i < listItems.length; i++) {
 
-    let checkbox = listItems[i].querySelector('#item-checkbox');
+    let checkbox = listItems[i].querySelector('.item-checkbox');
 
     //If a checkbox is not marked as checked, the counter increase wich means that there is things left to do.
     if (checkbox.checked === false) {
@@ -233,7 +234,7 @@ allButton.addEventListener("click", function (event) {
 activeButton.addEventListener("click", function (event) {
   event.preventDefault();
 
-  let checkboxes = document.querySelectorAll('#item-checkbox');
+  let checkboxes = document.querySelectorAll('.item-checkbox');
   let listItem = document.querySelectorAll('li');
 
   //Each checkbox index is match to the li-elements index.
@@ -250,7 +251,7 @@ activeButton.addEventListener("click", function (event) {
 completedButton.addEventListener("click", function (event) {
   event.preventDefault();
 
-  let checkboxes = document.querySelectorAll('#item-checkbox');
+  let checkboxes = document.querySelectorAll('.item-checkbox');
   let listItem = document.querySelectorAll('li');
 
   //Each checkbox index is match to the li-elements index.
