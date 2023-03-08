@@ -35,7 +35,7 @@ test('1 item - 0 items', async ({ page }) => {
 test('check counter', async ({ page }) => { 
 
   const newTodo = page.locator('[placeholder="What needs to be done?"]');
-
+  let listItem = document.querySelectorAll('li');
  
   const todos = ['A', 'B', 'C'];
 
@@ -50,12 +50,12 @@ test('check counter', async ({ page }) => {
   await newTodo.fill(todos[2]);
   await newTodo.press('Enter');
 
-  let checkbox = page.locator.listItem[0]('#item-checkbox');
+  let checkbox = listItem[0].querySelector('#item-checkbox');
 
   await expect(page.locator('#counter')).toHaveText('3 items left');
   
-  checkbox = await page.locator.listItem[0]('#item-checkbox');
-  await checkbox.click(0);
+  checkbox = await page.locator.listItem('#item-checkbox');
+  await checkbox.click();
 
   await expect(page.locator('#counter')).toHaveText('2 item left');
 
