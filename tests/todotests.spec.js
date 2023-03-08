@@ -53,7 +53,7 @@ test('remove notes', async ({ page }) => {
   await newTodo.fill(todos[5]);
   await newTodo.press('Enter');
 
-  await expect(page.locator('#counter')).toHaveText('6 item left');
+  await expect(page.locator('#counter')).toHaveText('6 items left');
 
   checkbox = await page.locator('#item-checkbox');
   await checkbox.click();
