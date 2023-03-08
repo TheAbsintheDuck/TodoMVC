@@ -16,7 +16,7 @@ test('add note', async ({ page }) => {
 test('1 item - 0 items', async ({ page }) => {
 
   const newTodo = page.locator('[placeholder="What needs to be done?"]');
-  let checkbox = page.locator('#item-checkbox');
+  let checkbox = page.locator('.item-checkbox');
   const todos = ['Watch a Brad Pitt Movie', 'Kidnap Brad Pitt', 'Make Brad Pitt love me'];
 
   await page.goto('http://127.0.0.1:5500/index.html');
@@ -26,7 +26,7 @@ test('1 item - 0 items', async ({ page }) => {
 
   await expect(page.locator('#counter')).toHaveText('1 item left');
 
-  checkbox = await page.locator('#item-checkbox');
+  checkbox = await page.locator('.item-checkbox');
   await checkbox.click();
 
   await expect(page.locator('#counter')).toHaveText('0 items left');
