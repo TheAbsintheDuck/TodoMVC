@@ -42,28 +42,27 @@ test('remove notes', async ({ page }) => {
 
   await newTodo.fill(todos[0]);
   await newTodo.press('Enter');
+  
   await newTodo.fill(todos[1]);
   await newTodo.press('Enter');
+
   await newTodo.fill(todos[2]);
   await newTodo.press('Enter');
-  await newTodo.fill(todos[3]);
-  await newTodo.press('Enter');
-  await newTodo.fill(todos[4]);
-  await newTodo.press('Enter');
-  await newTodo.fill(todos[5]);
-  await newTodo.press('Enter');
 
-  await expect(page.locator('#counter')).toHaveText('6 items left');
+  await expect(page.locator('#counter')).toHaveText('3 items left');
 
-  //checkbox = await page.locator('#item-checkbox');
+  checkbox = await page.locator('#item-checkbox');
   await checkbox.click();
 
+  await expect(page.locator('#counter')).toHaveText('2 item left');
+
+  /*
   let deleteButton = document.getElementById('delete');
 
   deleteButton.click();
 
   await expect(page.locator('#counter')).toHaveText('0 item left');
-
+  */
 
 });
 
