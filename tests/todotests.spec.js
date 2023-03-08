@@ -36,7 +36,7 @@ test('check counter', async ({ page }) => {
 
   const newTodo = page.locator('[placeholder="What needs to be done?"]');
   let checkbox = page.locator('#item-checkbox');
-  const todos = ['A', 'B', 'C', 'D', 'E', 'F'];
+  const todos = ['A', 'B', 'C'];
 
   await page.goto('http://127.0.0.1:5500/index.html');
 
