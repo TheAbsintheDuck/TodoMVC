@@ -55,12 +55,12 @@ test('remove notes', async ({ page }) => {
 
   await expect(page.locator('#counter')).toHaveText('6 items left');
 
-  checkbox = await page.locator('#item-checkbox');
+  //checkbox = await page.locator('#item-checkbox');
   await checkbox.click();
 
   let deleteButton = document.getElementById('delete');
 
-  await deleteButton.click();
+  deleteButton.click();
 
   await expect(page.locator('#counter')).toHaveText('0 item left');
 
