@@ -32,7 +32,7 @@ test('1 item - 0 items', async ({ page }) => {
   await expect(page.locator('#counter')).toHaveText('0 items left');
 });
 
-test('remove notes', async ({ page }) => { 
+test('check counter', async ({ page }) => { 
 
   const newTodo = page.locator('[placeholder="What needs to be done?"]');
   let checkbox = page.locator('#item-checkbox');
