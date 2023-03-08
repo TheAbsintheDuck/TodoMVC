@@ -40,8 +40,6 @@ test('check counter', async ({ page }) => {
 
   await page.goto('http://127.0.0.1:5500/index.html');
 
-  let listItem = page.locator('');
-
   await newTodo.fill(todos[0]);
   await newTodo.press('Enter');
   
