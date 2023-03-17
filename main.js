@@ -58,7 +58,7 @@ input.addEventListener("keypress", function (event) {
     liContainer.appendChild(p);
 
     listCounter++;
-    
+
     //Creates a closebutton and adds it to the container.
     let closeButton = document.createElement('span');
     closeButton.className = "close";

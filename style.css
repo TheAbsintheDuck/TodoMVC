@@ -34,8 +34,7 @@ h1 {
     margin: 0 auto;
 }
 
-.notepad form {
-    
+.notepad form {  
     align-items: center;
   }
   
@@ -78,7 +77,7 @@ input[type=text] {
     margin-bottom: 5px;
     margin-right:0;
     width: 95%;
-    
+    border:none;
 }
 
 
@@ -106,18 +105,40 @@ ul {
     padding: 0;
 }
 
-li {
-    list-style: none;
+li {    
+    align-items: center; 
+    list-style: none; 
+    margin-left: auto;
+    text-align: left;
+}
+
+.list-item {
+    display:grid;
+    grid-template-columns: 20px 1fr 50px; 
+    justify-content: space-between;  
+    
+    align-items: center;
+}
+
+p {
+    margin-left: 25px;
+}
+
+.item-checkbox {
+
+    align-items: center;
+
 }
 
 li:hover .close {
     display: block;
 }
 
-.close {
-    float: right;
-    cursor: pointer;
+.close {     
     display: none;
+    margin-left: auto;
+    cursor: pointer;
+
 }
 
 #counter {
