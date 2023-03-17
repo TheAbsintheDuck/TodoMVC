@@ -29,10 +29,16 @@ h1 {
     background-color: white;
     border-style: outset;
     box-shadow: 1px 5px 5px 1px grey;
+    align-self: center;
     width: 500px;
     margin: 0 auto;
 }
 
+.notepad form {
+    
+    align-items: center;
+  }
+  
 .notepad-footer {
     grid-area: notepad-footer;
     display: none;
@@ -66,19 +72,26 @@ input[type=text] {
 #todo {
     outline: none;
     box-sizing: border-box;
+    padding-left:0px;
     margin-left: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
+    margin-right:0;
     width: 95%;
+    
 }
 
-.notepad #select-all {
-    margin-left: 20px;
-    margin-top: 25px;
-    margin-bottom: 20px;
-    position: absolute;
+
+.notepad#select-all {  
     cursor: pointer;
 }
+
+.form-container {
+    display: grid;
+    grid-template-columns: 50px 1fr; 
+    align-items: center; 
+  }
+
 
 label input {
     padding: 16px;

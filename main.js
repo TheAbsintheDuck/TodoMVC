@@ -44,11 +44,13 @@ input.addEventListener("keypress", function (event) {
     listItem.appendChild(label);
     label.appendChild(liContainer);
 
+
     //Creates a checkbox.
     let checkbox = document.createElement('input');
     checkbox.type = "checkbox";
     checkbox.value = listCounter;
     checkbox.name = "checkbox";
+    checkbox.className ="item-checkbox";
     checkbox.id = "item-checkbox" + listCounter;
     checkbox.className = "item-checkbox";
 
