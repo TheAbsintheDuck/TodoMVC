@@ -115,8 +115,7 @@ li {
 .list-item {
     display:grid;
     grid-template-columns: 20px 1fr 50px; 
-    justify-content: space-between;  
-    
+    justify-content: space-between;   
     align-items: center;
 }
 
