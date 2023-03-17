@@ -3,7 +3,6 @@ let list = document.querySelector('#list');
 let checkboxes = document.querySelectorAll('input[type="checkbox"]');
 let listCounter = 1;
 
-
 //Disables and hides the "select-all"-checkbox before any li-elements have been added.
 document.getElementById("select-all").disabled = true;
 document.getElementById("select-all").style.opacity = 0;
@@ -45,17 +44,14 @@ input.addEventListener("keypress", function (event) {
     listItem.appendChild(label);
     label.appendChild(liContainer);
 
-
-    
     //Creates a checkbox.
 
     let checkbox = document.createElement('input');
     checkbox.type = "checkbox";
     checkbox.value = listCounter;
     checkbox.name = "checkbox";
-    checkbox.id = "item-checkbox" + listCounter;
     checkbox.className ="item-checkbox";
-
+    checkbox.id = "item-checkbox" + listCounter;
     
     //Adds the checkbox and the text to the container.
     liContainer.appendChild(checkbox);
@@ -85,9 +81,7 @@ input.addEventListener("keypress", function (event) {
 
     input.reset();
     listItemCounter();
-
-    
-    
+ 
     let deleteButton = document.getElementById('delete');
 
     deleteButton.onclick = function (event) {
@@ -141,7 +135,6 @@ function selectAllCheckboxes() {
   }
 };
 
-
 //Counts each listitem that isn't marked as checked.
 function listItemCounter() {
   let counter = document.querySelector('#counter');
@@ -161,8 +154,6 @@ function listItemCounter() {
 
     //Every time a checkbox is marked as checked or unchecked, the counter increase or decrease.
     checkbox.addEventListener('change', function () {
-
-     
 
       if (checkbox.checked === true) {
         count--;
@@ -193,10 +184,6 @@ function listItemCounter() {
       }
     });
   }
-
- 
-
-
 
   //Depending on the counters value, different output is displayed
   if (count < 1) {
@@ -264,8 +251,6 @@ completedButton.addEventListener("click", function (event) {
   }
 });
 
-
-
 checkboxes.forEach(function (checkbox) {
   checkbox.addEventListener("change", function () {
     
@@ -290,10 +275,3 @@ checkboxes.forEach(function (checkbox) {
   });
 
 });
-
-
-
-
-
-
-
