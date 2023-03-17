@@ -3,7 +3,6 @@ let list = document.querySelector('#list');
 let checkboxes = document.querySelectorAll('input[type="checkbox"]');
 let listCounter = 1;
 
-
 //Disables and hides the "select-all"-checkbox before any li-elements have been added.
 document.getElementById("select-all").disabled = true;
 document.getElementById("select-all").style.opacity = 0;
@@ -45,24 +44,20 @@ input.addEventListener("keypress", function (event) {
     listItem.appendChild(label);
     label.appendChild(liContainer);
 
-
-    
     //Creates a checkbox.
-
     let checkbox = document.createElement('input');
     checkbox.type = "checkbox";
     checkbox.value = listCounter;
     checkbox.name = "checkbox";
     checkbox.id = "item-checkbox" + listCounter;
-    checkbox.className ="item-checkbox";
+    checkbox.className = "item-checkbox";
 
-    
     //Adds the checkbox and the text to the container.
     liContainer.appendChild(checkbox);
     liContainer.appendChild(p);
 
     listCounter++;
-    
+
     //Creates a closebutton and adds it to the container.
     let closeButton = document.createElement('span');
     closeButton.className = "close";
@@ -86,30 +81,60 @@ input.addEventListener("keypress", function (event) {
     input.reset();
     listItemCounter();
 
-    
-    
+    checkbox.addEventListener('change', function (event) {
+      event.preventDefault();
+
+      let counter = document.querySelector('#counter');
+      let checkboxes = document.querySelectorAll('.item-checkbox');
+      let count = checkboxes.length;
+
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          count--;
+        }
+      }
+
+      if (count < 1) {
+        counter.textContent = count + " items left";
+        deleteButton.style.display = "none";
+        deleteButton.disabled = true;
+      }
+
+      else if (count === 1) {
+        counter.textContent = count + " item left";
+        deleteButton.style.display = "block";
+        deleteButton.disabled = false;
+      }
+
+      else {
+        counter.textContent = count + " items left";
+        deleteButton.style.display = "block";
+        deleteButton.disabled = false;
+      }
+    });
+
     let deleteButton = document.getElementById('delete');
 
     deleteButton.onclick = function (event) {
       let listItem = document.querySelectorAll('li');
-      
+
       event.preventDefault();
 
       const selectedObjects = [];
       let indexForArray = 0;
       for (let i = 0; i < listItem.length; i++) {
         let checkbox = listItem[i].querySelector('.item-checkbox');
-        
-        if (checkbox.checked === true) {     
+
+        if (checkbox.checked === true) {
           selectedObjects[indexForArray] = i;
-          indexForArray++;        
+          indexForArray++;
         }
       }
 
       for (let m = selectedObjects.length - 1; m >= 0; m--) {
         list.removeChild(list.getElementsByTagName("li")[selectedObjects[m]]);
       }
-      
+
     }
   }
 });
@@ -126,7 +151,6 @@ function selectAllCheckboxes() {
     }
 
     listItemCounter();
-
     allSelected = true;
   }
 
@@ -136,82 +160,30 @@ function selectAllCheckboxes() {
     }
 
     listItemCounter();
-
     allSelected = false;
   }
 };
 
-
 //Counts each listitem that isn't marked as checked.
 function listItemCounter() {
   let counter = document.querySelector('#counter');
-  let listItems = document.querySelectorAll('li');
-  let itemsCount = listItems.length;
-  let count = 0;
+  let checkboxes = document.querySelectorAll('.item-checkbox');
+  let uncheckedCount = 0;
 
-  //Iterates over all li-elements and match them with the checkbox with the same index.
-  for (let i = 0; i < listItems.length; i++) {
-
-    let checkbox = listItems[i].querySelector('.item-checkbox');
-
-    //If a checkbox is not marked as checked, the counter increase wich means that there is things left to do.
-    if (checkbox.checked === false) {
-      count++;
+  for (let i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked === false) {
+      uncheckedCount++;
     }
-
-    //Every time a checkbox is marked as checked or unchecked, the counter increase or decrease.
-    checkbox.addEventListener('change', function () {
-
-     
-
-      if (checkbox.checked === true) {
-        count--;
-        deleteButton.style.display = "block";
-        deleteButton.disabled = false; 
-      }
-
-      else {
-        count++;
-      }
-
-      //Depending on the counters value, different output is displayed everytime a checkbox is changed.
-      if (count < 1) {
-        counter.textContent = count + " items left";      
-      }
-
-      if (count === 1) {
-        counter.textContent = count + " item left";
-      }
-
-      if (count === itemsCount) {
-        deleteButton.style.display = "none";
-        deleteButton.disabled = true;
-      }
-
-      else { 
-        counter.textContent = count + " items left";
-      }
-    });
   }
 
- 
-
-
-
-  //Depending on the counters value, different output is displayed
-  if (count < 1) {
-    counter.textContent = count + " items left";   
-  }
-
-  if (count === 1) {
-    counter.textContent = count + " item left";
-      
+  if (uncheckedCount === 1) {
+    counter.textContent = uncheckedCount + " item left";
   }
 
   else {
-    counter.textContent = count + " items left";    
+    counter.textContent = uncheckedCount + " items left";
   }
-};
+}
 
 let allButton = document.querySelector('#all');
 let activeButton = document.querySelector('#active');
@@ -225,7 +197,6 @@ allButton.addEventListener("click", function (event) {
   let listItem = document.querySelectorAll('li');
 
   for (let i = 0; i < listItem.length; i++) {
-
     listItem[i].style.display = "block";
   }
 });
@@ -241,7 +212,9 @@ activeButton.addEventListener("click", function (event) {
   for (let i = 0; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
       listItem[i].style.display = "none";
-    } else {
+    }
+
+    else {
       listItem[i].style.display = "block";
     }
   }
@@ -258,22 +231,22 @@ completedButton.addEventListener("click", function (event) {
   for (let i = 0; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
       listItem[i].style.display = "block";
-    } else {
+    }
+
+    else {
       listItem[i].style.display = "none";
     }
   }
 });
 
-
-
 checkboxes.forEach(function (checkbox) {
   checkbox.addEventListener("change", function () {
-    
+
     let atLeastOneChecked = false;
-    
+
     checkboxes.forEach(function (checkbox) {
       if (checkbox.checked === true) {
-        atLeastOneChecked = true;      
+        atLeastOneChecked = true;
       }
     });
 
@@ -286,14 +259,5 @@ checkboxes.forEach(function (checkbox) {
       deleteButton.style.display = "none";
       deleteButton.disabled = true;
     }
-
   });
-
 });
-
-
-
-
-
-
-
