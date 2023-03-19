@@ -50,7 +50,7 @@ input.addEventListener("keypress", function (event) {
     checkbox.type = "checkbox";
     checkbox.value = listCounter;
     checkbox.name = "checkbox";
-    checkbox.className ="item-checkbox";
+    checkbox.className = "item-checkbox";
     checkbox.id = "item-checkbox" + listCounter;
     checkbox.className = "item-checkbox";
 
@@ -98,20 +98,26 @@ input.addEventListener("keypress", function (event) {
 
       if (count < 1) {
         counter.textContent = count + " items left";
-        deleteButton.style.display = "none";
-        deleteButton.disabled = true;
       }
 
       else if (count === 1) {
         counter.textContent = count + " item left";
+      }
+
+      else {
+        counter.textContent = count + " items left";
+      }
+
+      const atLeastOneChecked = document.querySelector('input[type="checkbox"]:checked');
+
+      if (atLeastOneChecked) {
         deleteButton.style.display = "block";
         deleteButton.disabled = false;
       }
 
       else {
-        counter.textContent = count + " items left";
-        deleteButton.style.display = "block";
-        deleteButton.disabled = false;
+        deleteButton.style.display = "none";
+        deleteButton.disabled = true;
       }
     });
 
