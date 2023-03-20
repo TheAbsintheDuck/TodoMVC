@@ -149,22 +149,22 @@ li:hover .close {
     justify-items: center;
     text-align: center;
     column-gap:0;
-    margin:0;
-    padding: 10px;
-    
+   
 }
 
-p #counter {  
+form #counter {  
     font-size: medium;
     width:100px;
     grid-area: counter;
-    justify-self: left;
+    justify-content: left;
     align-self: left;
     text-align:left;
-    margin-right: 50px;
-    margin-left: 0;
+    padding-right:20px;
+    
+    
    
 }
+
 
 form #all, #active, #completed {
     width:80px;
@@ -176,30 +176,22 @@ form #all, #active, #completed {
 
 form #all {
     grid-area: all;
-    margin-right: 0;
+    
 
 }
 
 form #active {
     grid-area:active;
-    margin-right: 0;
-    margin-left:0;
 }
 
 
 form #completed {
-    grid-area:completed;
-    margin-left:0;
-    margin-right:0;
+    grid-area:completed;  
 }
 
 
 form #delete {
-    /*
-   float: right;
-    */
-    grid-area: clear;
-    width:120;
+    grid-area: clear;   
     margin-left: auto;
     
 }
@@ -214,16 +206,71 @@ p {
     word-wrap: break-word;
 }
 
-
-@media (max-width:500px) {
-
-    .note-container {
-        width:100%;
+@media (min-width:3000px) {
+    .container {
+        max-width:150%;
         height:auto;
+        font-size:larger;
+        padding:40px;
+    }
+
+    h1 {
+        font-size: 6em;
+        margin:40px;
+    }
+    body {
+        font-size:larger;
+    }
+
+    input[type=text] {
+        font-size:larger;
     }
 
     
+    input [type="checkbox"] {
+        padding: 40px;
+    }
+
+    .list-item {
+        font-size:larger;
+        padding:20px;
+    }
+
+   
+
+    .form #delete {
+        width:120px;
+        font-size:medium;
+        height:auto;
+        margin-left:auto;
+    }
+    .form #counter, #all, #active, #completed, #delete {
+        font-size:large;
+        width:120px;
+        height:auto;
+        padding:auto;
+        justify-self: center ;
+        align-self: center;
+        text-align: center;
+    }
+    .form #all {
+        margin-right:auto;
+    }
+
+    .form #active {
+        margin-left:auto;
+    }
+
+ 
+}
+
+@media (max-width:500px) {
+
     
+    .container {
+        max-width:150%;
+        height:auto;
+    }
 }
 
 .notepad-footer {
