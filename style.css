@@ -36,10 +36,11 @@ h1 {
 
 .notepad form {  
     align-items: center;
-  }
-  
+}
+
 .notepad-footer {
     grid-area: notepad-footer;
+    align-items: center;
     display: none;
 }
 
@@ -85,11 +86,11 @@ input[type=text] {
     cursor: pointer;
 }
 
-.form-container {
+.note-container {
     display: grid;
     grid-template-columns: 50px 1fr; 
     align-items: center; 
-  }
+}
 
 
 label input {
@@ -140,20 +141,69 @@ li:hover .close {
 
 }
 
-#counter {
-    position: absolute;
-    font-size: medium;
-    margin-left: 10px;
+.status form {
+    display: grid;
+    grid-template-areas: "counter all active completed clear";
+    grid-template-columns: 120px 80px 80px 80px 120px;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    column-gap:0;
+    margin:0;
+    padding: 10px;
+    
 }
 
-.status {
-    text-align: center;
-    padding: 10px;
+p #counter {  
+    font-size: medium;
+    width:100px;
+    grid-area: counter;
+    justify-self: left;
+    align-self: left;
+    text-align:left;
+    margin-right: 50px;
+    margin-left: 0;
+   
 }
+
+form #all, #active, #completed {
+    width:80px;
+    align-items: center;
+    justify-items: center;
+    margin-left: 0; 
+    margin-right: 0;
+}
+
+form #all {
+    grid-area: all;
+    margin-right: 0;
+
+}
+
+form #active {
+    grid-area:active;
+    margin-right: 0;
+    margin-left:0;
+}
+
+
+form #completed {
+    grid-area:completed;
+    margin-left:0;
+    margin-right:0;
+}
+
 
 form #delete {
-    float: right;
+    /*
+   float: right;
+    */
+    grid-area: clear;
+    width:120;
+    margin-left: auto;
+    
 }
+
 .item-checkbox:checked+p {
     text-decoration: line-through;
 }
@@ -162,4 +212,20 @@ p {
     display: inline-block;
     max-width: 400px;
     word-wrap: break-word;
+}
+
+
+@media (max-width:500px) {
+
+    .note-container {
+        width:100%;
+        height:auto;
+    }
+
+    
+    
+}
+
+.notepad-footer {
+    height:fit-content;
 }
